@@ -88,8 +88,8 @@ Add the required environment variables:
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 BETTER_AUTH_URL=http://localhost:3000
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+STRIPE_SECRET_KEY=my_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=my_stripe_webhook_secret
 ```
 
 Configure any additional authentication, JWT, CORS, or Stripe variables required by your application.
