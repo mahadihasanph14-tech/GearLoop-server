@@ -63,7 +63,7 @@ gearloop-server/
 ### 1. Clone the Repository
 
 ```bash
-git clone YOUR_SERVER_REPOSITORY_URL
+git clone https://github.com/mahadihasanph14-tech/GearLoop-server
 ```
 
 ### 2. Navigate to the Project Directory
@@ -120,4 +120,61 @@ The backend provides RESTful API endpoints for the following modules:
 
 | Module | Main Endpoints | Description |
 |---|---|---|
-| Authentication | `/
+| Authentication | `/api/auth/*` | Authentication integration |
+| Users | `/api/users` | User management |
+| Equipment | `/api/equipment` | Equipment management |
+| Bookings | `/api/bookings` | Booking management |
+| Payments | `/api/payments` | Payment and webhook handling |
+| Favorites | `/api/favorites` | Favorite equipment management |
+| Dashboard | `/api/dashboard` | Dashboard statistics |
+
+### Role-Based Access
+
+- **Customer:** Browse equipment, manage favorites, create bookings, and view rentals.
+- **Owner:** Manage equipment listings and rental requests.
+- **Admin:** Manage users, moderate equipment, and monitor bookings and analytics.
+
+## 💳 Payment Integration
+
+GearLoop uses Stripe Checkout to process equipment rental payments.
+
+Payment workflow:
+
+1. Customer selects equipment and booking dates.
+2. Backend validates equipment availability.
+3. A Stripe Checkout session is created.
+4. Customer completes the payment.
+5. Stripe sends a webhook event.
+6. Backend updates the booking and payment records.
+
+## ⏰ Automated Booking Jobs
+
+GearLoop uses Node-cron to check for expired bookings every 15 minutes.
+
+Eligible paid and approved bookings are automatically marked as completed after their rental end date.
+
+## 🔒 Security
+
+- JWT-based request authentication.
+- Role-based route protection.
+- Environment variables for sensitive configuration.
+- Stripe webhook integration for payment verification.
+- Server-side validation for booking operations.
+
+## 👨‍💻 Development
+
+Start the backend in development mode:
+
+```bash
+npm run dev
+```
+
+Compile TypeScript:
+
+```bash
+npm run build
+```
+
+---
+
+**GearLoop – Making Equipment Rental Simple and Convenient.**
