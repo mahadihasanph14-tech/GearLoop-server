@@ -86,7 +86,7 @@ Add the required environment variables:
 
 ```env
 PORT=5000
-MONGODB_URI=your_mongodb_connection_string
+MONGODB_URI=my_mongodb_connection_string
 BETTER_AUTH_URL=http://localhost:3000
 STRIPE_SECRET_KEY=my_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=my_stripe_webhook_secret
