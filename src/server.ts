@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { config } from "./config.js";
 import { connectDB } from "./db.js";
-
+import { startBookingJobs } from "./jobs/booking-jobs.js";
 import equipment from "./routes/equipment.js";
 import bookings from "./routes/bookings.js";
 import favorites from "./routes/favorites.js";
@@ -12,6 +12,7 @@ import { verifyToken, verifyOwner } from "./middleware/auth.js";
 import { stripeWebhook } from "./routes/payments.js";
 
 const app = express();
+const PORT = Number(process.env.PORT) || 5000;
 
 // Stripe Webhook
 app.post(
@@ -76,14 +77,16 @@ app.use(
   },
 );
 
-// Start Server
+
 connectDB()
   .then(() => {
-    app.listen(config.port, () => {
-      console.log(`GearLoop API running on port ${config.port}`);
+    startBookingJobs();
+
+    app.listen(PORT, () => {
+      console.log(`GearLoop API running on port ${PORT}`);
     });
   })
-  .catch((e) => {
-    console.error("Startup failed", e);
+  .catch((error) => {
+    console.error("Failed to start server:", error);
     process.exit(1);
   });
